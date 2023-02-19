@@ -17,23 +17,23 @@ Following was the data collected on *x64-based processor with 16GB RAM on 11th G
 
 | **use of multithread** | **no of threads used** | **array size** | **duration (ms)** |
 |---|---|---|---|
-| **`yes`** | 2 | 1,000 | 0.587 |
-| **`no`** |  |  | 0.297 |
+| **yes** | 2 | 1,000 | 0.587 |
+| **no** |  |  | 0.297 |
 |  |  |  |  |  
-| **`yes`** | 5 | 10,000 | 1.843 |
-| **`no`** |  |  | 2.964 |
+| **yes** | 5 | 10,000 | 1.843 |
+| **no** |  |  | 2.964 |
 |  |  |  |  |
-| **`yes`** | 10 | 100,000 | 12.381 |
-| **`no`** |  |  | 26.342 |
+| **yes** | 10 | 100,000 | 12.381 |
+| **no** |  |  | 26.342 |
 |  |  |  |  |
-| **`yes`** | 100 | 1,000,000 | 115.175 |
-| **`no`** |  |  | 317.272 |
+| **yes** | 100 | 1,000,000 | 115.175 |
+| **no** |  |  | 317.272 |
 |  |  |  |  |
-| **`yes`** | 1000 | 10,000,000 | 1164.62 |
-| **`no`** |  |  | 3697.193 |
+| **yes** | 1000 | 10,000,000 | 1164.62 |
+| **no** |  |  | 3697.193 |
 |  |  |  |  |
-| **`yes`** | 10000 | 100,000,000 | 14630.33 |
-| **`no`** |  |  | 41892.966 |
+| **yes** | 10000 | 100,000,000 | 14630.33 |
+| **no** |  |  | 41892.966 |
 
 ## Build Steps [wsl]
 ***
@@ -52,6 +52,6 @@ $ ./test
 ```
 
 ### Variables
--   use_multithread: set this 1 for enabling multithread || set this 0 for disabling multithread.
-- thread_threshold: max number of threads allowed to be running concurrently. A good number to set this is ~ 20,000, but it depends on your machine's hardware.
-- arr_size: no of elements to sort
+-   `use_multithread`: set this 1 for enabling multithread || set this 0 for disabling multithread.
+- `thread_threshold`: max number of threads allowed to be running concurrently. A good number to set this is ~ 20,000, but it depends on your machine's hardware.
+- `arr_size`: no of elements to sort
