@@ -1,12 +1,12 @@
 #include <iostream>
 #include <thread>
 #include <vector>
-#include <chrono>
 #include <algorithm>
+#include "timer.h"
 
 // multithread controller 
 // set to False for disabling multithread
-
+#define use_multithread 1
 
 // keep track for no of threads used in proccess
 int no_running_threads = 0;
@@ -14,43 +14,11 @@ int no_running_threads = 0;
 /* set limit to no of threads generating been used
 should be less than 1984 (on x64-based processor 16GB RAM
 on 11th Gen Intel(R) Core(TM) i5-1135G7)*/
-#define use_multithread 1
 int thread_threshold = 10;
-int arr_size = 100000; // array size
-// class for benchmarking parts of code
-// you can find the step-by-step implementation for benchmark here
-// https://youtu.be/YG4jexlSAjc 
 
-class Timer
-{
-public:
-	Timer()
-	{
-		m_StartTimepoint = std::chrono::high_resolution_clock::now();
-	}
+// array size
+int arr_size = 100000; 
 
-	~Timer()
-	{
-		Stop();
-	}
-
-	void Stop()
-	{
-		auto endTimePoint = std::chrono::high_resolution_clock::now();
-
-		auto start = std::chrono::time_point_cast<std::chrono::microseconds>(m_StartTimepoint).time_since_epoch().count();
-		auto end = std::chrono::time_point_cast<std::chrono::microseconds>(endTimePoint).time_since_epoch().count();
-
-		auto duration = end - start;
-		auto ms = duration * 0.001;
-		auto sec = ms*0.001;
-
-		std::cout << "Time Elapsed: " << duration << "us | " << ms << "ms | " << sec << "s" <<"\n";
-	}
-
-private:
-	std::chrono::time_point< std::chrono::high_resolution_clock> m_StartTimepoint;
-};
 
 // Merge Function for two sorted partitions
 static void Merge(std::vector<int>& arr, std::vector<int>& helper, int low, int mid, int high)
@@ -132,9 +100,6 @@ int main()
     
 	std::vector<int> arr(arr_size); // array to sort
 	std::vector<int> helper(arr_size); // helper array 
-
-	// std::cout << "Enter arr_size: ";
-	// std::cin >> arr_size;
 
 	std::cout << "Array size: " << arr_size << "\n";
 	// Fill array with random elements

@@ -50,3 +50,8 @@ Following was the data collected on *x64-based processor with 16GB RAM on 11th G
 ```
 $ ./test
 ```
+
+### Variables
+-   use_multithread: set this 1 for enabling multithread || set this 0 for disabling multithread.
+- thread_threshold: max number of threads allowed to be running concurrently. A good number to set this is ~ 20,000, but it depends on your machine's hardware.
+- arr_size: no of elements to sort
